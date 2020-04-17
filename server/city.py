@@ -1,5 +1,7 @@
 import numpy as np
 
+#This is the class that represents a city with a name and (x,y) coordinates.
+
 class City:
     def __init__(self, name:str, x:float, y:float):
         self.name = name
@@ -7,6 +9,9 @@ class City:
         self.y = y
     
     def calculateDistance(self, endCity):
+        '''
+        Method used to calculate the euclidean distance between this and another city
+        '''
 
         xDistance = abs(self.x - endCity.x)
         yDistance = abs(self.y - endCity.y)
