@@ -38,7 +38,7 @@ def produceNewGeneration(population:List[Gen], eliteSize:int):
 
     return newGeneration
 
-def mutateGen(path):
+def mutateGen(path:List[City]):
 
     pos1 = getRandomBetween(0, len(path)-1)
 
