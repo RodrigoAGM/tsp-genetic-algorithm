@@ -6,7 +6,7 @@ class City:
         self.x = x
         self.y = y
     
-    def calculateDistance(self, endCity:City):
+    def calculateDistance(self, endCity):
 
         xDistance = abs(self.x - endCity.x)
         yDistance = abs(self.y - endCity.y)
