@@ -7,6 +7,7 @@
 - Node
 - Python 3.x
 - Pip
+- Yarn
 
 ## Run development
 
