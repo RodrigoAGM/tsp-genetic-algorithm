@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="https://www.localsolver.com/docs/last/_images/tsp.png" />
+    <img id="logo" src="https://www.localsolver.com/docs/last/_images/tsp.png" />
     <Main msg="Traveling Salesman Problem - Genetic Algorithm" />
   </div>
 </template>
@@ -17,7 +17,11 @@ import Main from "@/components/Main.vue";
 export default class App extends Vue {}
 </script>
 
-<style>
+<style >
+#logo {
+  width: 150px;
+  height: 150px;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
