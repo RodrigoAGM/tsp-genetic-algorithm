@@ -1,6 +1,6 @@
-from city import City
-from gen import Gen
-from fitness import fitness, List
+from server.city import City
+from server.gen import Gen
+from server.fitness import fitness, List
 import random
 
 def generateRandomPath(cityList:List[City]):
@@ -150,4 +150,4 @@ def geneticAlgorithm(cityList:List[City], nGenerations:int, mutationProb:float, 
     print("Final distance: " + str(population[0].fitness))
     bestPath = population[0].path
 
-    return bestPath
+    return bestPath, population[0].fitness

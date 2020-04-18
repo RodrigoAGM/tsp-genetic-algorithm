@@ -1,4 +1,4 @@
-from city import City
+from server.city import City
 from typing import List
 
 def calculateTotalDistance(path:List[City]):

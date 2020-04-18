@@ -1,4 +1,4 @@
-from city import City
+from server.city import City
 
 def generateCityList(rawList:list):
     '''
@@ -15,3 +15,15 @@ def generateCityList(rawList:list):
         cityList.append(city)
 
     return cityList
+
+def generateDictArray(cityList):
+    '''
+    This method will transform a list of cities to a list of dictionaries
+    '''
+    dicList = []
+
+    for city in cityList:
+        dic = {"id": city.name, "x": city.x, "y": city.y}
+        dicList.append(dic)
+
+    return dicList
