@@ -5,13 +5,13 @@
         <text :x="c.x - 10" :y="c.y - 10 - 2">{{c.id}}</text>
         <circle id="c.id" :cx="c.x" :cy="c.y" :r="10" style="stroke:#000" />
       </g>
-      <!-- <line key="id" :x1="1" :y1="12" :x2="323" :y2="212" style="stroke: #000" /> -->
+      <!-- Logic for lines, generate DS to use vfor <line key="id" :x1="1" :y1="12" :x2="323" :y2="212" style="stroke: #000" /> -->
     </svg>
   </div>
 </template>
 
 <script lang="ts">
-import Point from "./Point.vue";
+// import Point from "./Point.vue";
 import Vue from "vue";
 
 export default Vue.extend({
