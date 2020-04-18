@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <Map :cities="cities" :result="results" @addCity="addCity" />
+    <Map :cities="cities" :results="results" @addCity="addCity" />
     <b-button @click="calculateRoute" variant="primary">Calcular ruta</b-button>
     <Result :results="results" />
   </div>
@@ -26,7 +26,8 @@ export default class Main extends Vue {
   private cities: Array<object> = [];
   private results: object = {
     route: [],
-    distance: 0
+    distance: 0,
+    time: 0
   };
 
   public calculateRoute() {
@@ -36,7 +37,7 @@ export default class Main extends Vue {
       data: this.cities
     }).then(
       result => {
-        console.log(result);
+        console.log(result.data.cities);
       },
       error => {
         console.error(error);
