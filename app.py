@@ -23,7 +23,7 @@ def calculate_route():
     cities = [c for c in cities]
     # TODO: calculate routes and await for response
     print(cities)
-    return {"time": 1213.12, "cities": cities, "distance": 121}
+    return {"time": 1213.12, "route": cities, "distance": 121}
 
 
 if __name__ == "__main__":

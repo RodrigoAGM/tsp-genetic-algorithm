@@ -38,6 +38,7 @@ export default class Main extends Vue {
     }).then(
       result => {
         console.log(result.data.cities);
+        this.results = result.data;
       },
       error => {
         console.error(error);
