@@ -3,9 +3,17 @@
     <svg id="map" width="800" height="600" @click="drawPoint">
       <g v-for="c in cities" v-bind:key="c.id">
         <text :x="c.x - 10" :y="c.y - 10 - 2">{{c.id}}</text>
-        <circle id="c.id" :cx="c.x" :cy="c.y" :r="10" style="stroke:#000" />
+        <circle :id="c.id" :cx="c.x" :cy="c.y" :r="10" style="stroke:#000" />
       </g>
-      <!-- Logic for lines, generate DS to use vfor <line key="id" :x1="1" :y1="12" :x2="323" :y2="212" style="stroke: #000" /> -->
+      <line
+        v-for="(r, index) in results.route"
+        v-bind:key="r.id"
+        :x1="results.route[index].x"
+        :y1="results.route[index].y"
+        :x2="(results.route[index+1] != undefined) ? results.route[index+1].x : results.route[0].x"
+        :y2="(results.route[index+1] != undefined) ? results.route[index+1].y : results.route[0].y"
+        style="stroke: #000"
+      />
     </svg>
   </div>
 </template>
@@ -20,7 +28,8 @@ export default Vue.extend({
     // Point
   },
   props: {
-    cities: Array
+    cities: Array,
+    results: Object
   },
   data() {
     return {
