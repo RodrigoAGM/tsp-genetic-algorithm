@@ -32,7 +32,7 @@ export default class Main extends Vue {
   public calculateRoute() {
     axios({
       method: "POST",
-      url: " http://0.0.0.0:5000/calculate_route",
+      url: " http://localhost:5000/calculate_route",
       data: this.cities
     }).then(
       result => {
