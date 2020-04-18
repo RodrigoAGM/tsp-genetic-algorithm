@@ -2,7 +2,7 @@
   <div>
     <p>Shortest route: {{results.route}}</p>
     <p>Distance travelled: {{results.distance}}</p>
-    <p>Caculation time</p>
+    <p>Caculation time: {{results.time}}</p>
   </div>
 </template>
 
