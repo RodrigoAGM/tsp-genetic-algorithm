@@ -14,3 +14,10 @@ export default class Result extends Vue {
   @Prop() private results!: Array<string>;
 }
 </script>
+
+
+<style scoped>
+  #route{
+    margin: 2rem 2rem 1rem 2rem;
+  }
+</style>
