@@ -1,13 +1,13 @@
 <template>
   <div>
     <svg id="map" width="800" height="600" @click="drawPoint">
-      <g v-for="c in cities" v-bind:key="c.id">
+      <g v-for="(c,index) in cities" v-bind:key="'city'+index">
         <text :x="c.x - 10" :y="c.y - 10 - 2">{{c.id}}</text>
         <circle :id="c.id" :cx="c.x" :cy="c.y" :r="10" style="stroke:#000" />
       </g>
       <line
         v-for="(r, index) in results.route"
-        v-bind:key="r.id"
+        v-bind:key="'route'+index"
         :x1="results.route[index].x"
         :y1="results.route[index].y"
         :x2="(results.route[index+1] != undefined) ? results.route[index+1].x : results.route[0].x"
