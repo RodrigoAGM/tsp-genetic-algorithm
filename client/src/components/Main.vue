@@ -3,6 +3,7 @@
     <h1>{{ msg }}</h1>
     <Map :cities="cities" :results="results" @addCity="addCity" />
     <b-button @click="calculateRoute" variant="primary">Calcular ruta</b-button>
+    <b-button @click="clearMap" variant="danger">Limpiar mapa</b-button>
     <Result :results="results" />
   </div>
 </template>
@@ -37,7 +38,7 @@ export default class Main extends Vue {
       data: this.cities
     }).then(
       result => {
-        console.log(result.data.cities);
+        console.log(result.data.route);
         this.results = result.data;
       },
       error => {
@@ -48,6 +49,12 @@ export default class Main extends Vue {
 
   public clearMap() {
     this.fetching = false;
+    this.cities = [];
+    this.results = {
+      route: [],
+      distance: 0,
+      time: 0
+    };
   }
   public addCity(city: object) {
     console.log(city);
@@ -59,6 +66,6 @@ export default class Main extends Vue {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-  margin: 40px 0 0;
+  margin: 20px 0 0;
 }
 </style>
