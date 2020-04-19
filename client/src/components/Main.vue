@@ -2,9 +2,6 @@
   <div>
     <h1>{{ msg }}</h1>
     <Map :cities="cities" :results="results" @addCity="addCity" />
-    <b-button @click="calculateRoute" variant="primary">Calcular ruta</b-button>
-    <b-button @click="clearMap" variant="danger">Limpiar mapa</b-button>
-    <br />
     <div class="input-ga">
       <b-form-input placeholder="Number of generations" v-model="generationNumber" type="number"></b-form-input>
       <b-form-input
@@ -12,9 +9,13 @@
         v-model="mutationProbability"
         type="number"
       ></b-form-input>
-      <b-form-input placeholder="Initial poblation" v-model="initialPoblation" type="number"></b-form-input>
+      <b-form-input placeholder="Initial population" v-model="initialPoblation" type="number"></b-form-input>
       <b-form-input placeholder="Elite size" v-model="eliteSize" type="number"></b-form-input>
     </div>
+    <b-button @click="calculateRoute" variant="primary">Calcular ruta</b-button>
+    <b-button @click="clearMap" variant="danger">Limpiar mapa</b-button>
+    <br />
+    
     <Result :results="results" />
   </div>
 </template>
@@ -66,31 +67,33 @@ export default class Main extends Vue {
 
   private areFieldsValid(): boolean {
     if (this.cities.length < 2) {
-      console.log("erro");
+      console.log("error");
       this.showErrorModal(
         "There is not enough cities",
         "You have to enter more than 2 cities to run the optimitazion search algorithm."
       );
       return false;
     }
+    
     if (
-      this.eliteSize <= 0 ||
-      this.generationNumber <= 0 ||
-      this.initialPoblation <= 0 ||
-      this.mutationProbability <= 0
+      Number(this.eliteSize) <= 0 || this.eliteSize == null ||
+      Number(this.generationNumber) <= 0 || this.generationNumber == null ||
+      Number(this.initialPoblation) <= 0 || this.initialPoblation == null ||
+      Number(this.mutationProbability) <= 0 || this.mutationProbability == null
     ) {
       this.showErrorModal(
         "Error on input data",
-        "all fields must have a value bigger than 0"
+        "All fields must have a value bigger than 0"
       );
       return false;
-    } else if (this.eliteSize > this.initialPoblation) {
+    } else if (Number(this.eliteSize) > Number(this.initialPoblation)) {
       this.showErrorModal(
         "Error on input data",
-        "The elite size can't be greater than the initila poblation"
+        "The elite size can't be greater than the initial population"
       );
       return false;
     }
+
     return true;
   }
 
@@ -144,7 +147,15 @@ h3 {
 .input-ga {
   display: flex;
   align-items: center;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+input{
+  margin: 1rem 0.5rem 1.5rem 0.5rem;
+}
+
+button{
+  margin: 0px 0.5rem 0px 0.5rem;
 }
 </style>
