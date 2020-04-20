@@ -7,12 +7,12 @@ class Gen:
         self.path = path
         self.fitness = fitness
 
-    def __lt__(self, other: Gen):
+    def __lt__(self, other):
         # This method will let us compare if a gen fitness is less than another
         # gen fitness. This will be useful to sort a list of gens
         return self.fitness < other.fitness
 
-    def __gt__(self, other: Gen):
+    def __gt__(self, other):
         # This method will let us compare if a gen fitness is greater than another
         # gen fitness. This will be useful to sort a list of gens
         return self.fitness > other.fitness
