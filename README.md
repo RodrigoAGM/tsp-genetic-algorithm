@@ -4,10 +4,10 @@
 
 ## Requirements
 
-- Node
-- Python 3.x
-- Pip
-- Yarn
+- [Node](https://nodejs.org/en/)
+- [Python 3.x](https://www.python.org/)
+- [Pip](https://pypi.org/project/pip/)
+- [Yarn](https://yarnpkg.com/) (Optional)
 
 ## Run development
 
@@ -19,6 +19,6 @@
 
 ### Client
 
-- `npm install`
-- `yarn serve`
+- `yarn` or `npm install`
+- `yarn serve` or `npm run serve`
 - Now client is running in `http://localhost:8080/`
