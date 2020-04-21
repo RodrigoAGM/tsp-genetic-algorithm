@@ -14,7 +14,7 @@
 ### Server
 
 - `pip install -r requirements.txt`
-- `python3 __init__.py`
+- Go to root and run `python3 app.py`
 - Now server is running in `http://0.0.0.0:5000/`
 
 ### Client
