@@ -12,7 +12,8 @@
 ## Run development
 
 ### Server
-
+- `python3 -m venv venv`
+- `source venv/bin/activate`
 - `pip install -r requirements.txt`
 - Go to root and run `python3 app.py`
 - Now server is running in `http://0.0.0.0:5000/`
