@@ -64,43 +64,47 @@ function mapLocation() {
             directionsDisplay = null;
         }
 
-        for (var i = 0; i < locations.length - 1; i++) {
+        // for (var i = 0; i < locations.length - 1; i++) {
 
-            // var bounds = new google.maps.LatLngBounds();
-            var start = new google.maps.LatLng(locations[i].lat(), locations[i].lng());
-            var end = new google.maps.LatLng(locations[i + 1].lat(), locations[i + 1].lng());
-            // bounds.extend(start);
-            // bounds.extend(end);
-            // map.fitBounds(bounds);
-            // var request = {
-            //     origin: start,
-            //     destination: end,
-            //     travelMode: google.maps.TravelMode.DRIVING
-            // };
-            // directionsService.route(request, function (response, status) {
-            //     if (status == google.maps.DirectionsStatus.OK) {
-            //         // directionsDisplay = new google.maps.DirectionsRenderer();
-            //         // directionsDisplay.setDirections(response);
-            //         // directionsDisplay.setMap(map);
-            //         // directionsDisplay = null;
+        //     // var bounds = new google.maps.LatLngBounds();
+        //     var start = new google.maps.LatLng(locations[i].lat(), locations[i].lng());
+        //     var end = new google.maps.LatLng(locations[i + 1].lat(), locations[i + 1].lng());
+        //     // bounds.extend(start);
+        //     // bounds.extend(end);
+        //     // map.fitBounds(bounds);
+        //     // var request = {
+        //     //     origin: start,
+        //     //     destination: end,
+        //     //     travelMode: google.maps.TravelMode.DRIVING
+        //     // };
+        //     // directionsService.route(request, function (response, status) {
+        //     //     if (status == google.maps.DirectionsStatus.OK) {
+        //     //         // directionsDisplay = new google.maps.DirectionsRenderer();
+        //     //         // directionsDisplay.setDirections(response);
+        //     //         // directionsDisplay.setMap(map);
+        //     //         // directionsDisplay = null;
 
 
-            //     } else {
-            //         alert("Directions Request from " + start.toUrlValue(6) + " to " + end.toUrlValue(6) + " failed: " + status);
-            //     }
-            // });
-            var flightPath = new google.maps.Polyline({
-                path: [start, end],
-                geodesic: true,
-                strokeColor: '#FF0000',
-                strokeOpacity: 1.0,
-                strokeWeight: 3,
-                travelMode: google.maps.TravelMode.DRIVING
-            });
+        //     //     } else {
+        //     //         alert("Directions Request from " + start.toUrlValue(6) + " to " + end.toUrlValue(6) + " failed: " + status);
+        //     //     }
+        //     // });
+        //     console.log(locations);
 
-            flightPath.setMap(map);
 
-        }
+        // }
+
+
+        var flightPath = new google.maps.Polyline({
+            path: locations,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 3,
+            travelMode: google.maps.TravelMode.DRIVING
+        });
+
+        flightPath.setMap(map);
 
 
     }
