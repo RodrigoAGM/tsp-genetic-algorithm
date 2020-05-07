@@ -1,9 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
-
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import { ModalPlugin } from 'bootstrap-vue'
+Vue.use(ModalPlugin)
 
 Vue.config.productionTip = false
+
+// Install BootstrapVue
+Vue.use(BootstrapVue)
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin)
 
 Vue.use(VueGoogleMaps, {
   load: {
