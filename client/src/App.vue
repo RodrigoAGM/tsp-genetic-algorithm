@@ -6,8 +6,15 @@
       :zoom="15"
       map-type-id="terrain"
       style="width: 100%; height: 800px;"
+      @click="onEvent"
     >
-      <GmapMarker v-for="(m,key) in markers" :position="m" :clickable="true" v-bind:key="key"></GmapMarker>
+      <GmapMarker
+        v-for="(m,key) in markers"
+        :position="m"
+        :clickable="true"
+        v-bind:key="key"
+        :label="key"
+      ></GmapMarker>
 
       <GmapPolyline v-bind:path.sync="markers" v-bind:options="{ strokeColor:'#0000FF'}"></GmapPolyline>
     </GmapMap>
@@ -39,6 +46,15 @@ export default Vue.extend({
         }
       ]
     };
+  },
+  methods: {
+    onEvent(event) {
+      console.log(event.latLng.lat(), event.latLng.lng());
+      this.markers.push({
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng()
+      });
+    }
   }
 });
 </script>
