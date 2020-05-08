@@ -3,7 +3,6 @@ from typing import List
 import math
 import random
 
-
 class SimulatedAnnealing(object):
 
     def __init__(self, cityList: List[City], temperature: float = None, coldIndex: float = None,
@@ -16,6 +15,8 @@ class SimulatedAnnealing(object):
         self.stoppingIteration = 100000 if not stoppingIteration else stoppingIteration
 
         self.iteration = 0
+        self.progress = []
+
         self.currentRoute = None
         self.currentEnergy = float("Inf")
         self.bestRoute = None
@@ -66,8 +67,7 @@ class SimulatedAnnealing(object):
         self.currentRoute, self.currentEnergy = initRoute, self.calculateRouteEnergy(
             initRoute)
 
-        progress = []
-        progress.append(self.currentEnergy)
+        self.progress.append(self.currentEnergy)
 
         while self.iteration < self.stoppingIteration and self.temperature >= self.stoppingTemperature:
 
@@ -82,6 +82,8 @@ class SimulatedAnnealing(object):
             self.acceptanceFunction(newRoute)
             self.temperature *= self.coldIndex
             self.iteration += 1
+
+            self.progress.append(self.currentEnergy)
 
         print("The best route found was: " + str(self.bestRoute))
         print("The best energy value is: " + str(self.bestEnergy))
