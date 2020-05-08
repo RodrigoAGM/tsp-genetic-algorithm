@@ -12,8 +12,9 @@ class SimulatedAnnealing(object):
         self.temperature = 1000 if not temperature else temperature
         self.coldIndex = 0.995 if not coldIndex else (1-coldIndex)
         self.stoppingTemperature = 1e-8 if not stoppingTemperature else stoppingTemperature
-        self.stoppingIterations = 100000 if not stoppingIterations else stoppingIterations
+        self.stoppingIteration = 100000 if not stoppingIteration else stoppingIteration
 
+        self.iteration = 0
         self.currentRoute = None
         self.currentEnergy = float("Inf")
         self.bestRoute = None
@@ -37,14 +38,14 @@ class SimulatedAnnealing(object):
         for i in range(0, self.N - 1):
 
             endIndex = 0 if i == (self.N - 1) else i + 1
-            totalEnergy += self.dist(route[i], route[endIndex])
+            totalEnergy += self.calculateEnergy(route[i], route[endIndex])
 
         return totalEnergy
 
 
     def acceptanceFunction(self, newRoute):
     
-        newEnergy = self.fitness(newRoute)
+        newEnergy = self.calculateRouteEnergy(newRoute)
 
         if newEnergy < self.currentEnergy:
 
@@ -60,4 +61,28 @@ class SimulatedAnnealing(object):
 
                 self.currentEnergy, self.currentRoute = newEnergy, newRoute
 
-    
+
+    def executeAlgorithm(self):
+
+        initRoute = self.generateRandomRoute()
+        self.currentRoute, self.currentEnergy = initRoute, self.calculateRouteEnergy(initRoute)
+
+        progress = []
+        progress.append(self.currentEnergy)
+
+        while self.iteration < self.stoppingIteration and self.temperature >= self.stoppingTemperature:
+
+            newRoute = list(self.currentRoute)
+
+            randomIndex1 = random.randint(2, self.N - 1)
+            randomIndex2 = random.randint(0, self.N - randomIndex1)
+
+            newRoute[randomIndex1:(randomIndex2+randomIndex1)] = newRoute[randomIndex1:(randomIndex2+randomIndex1)][::-1]
+
+            self.acceptanceFunction(newRoute)
+            self.temperature *= self.coldIndex
+            self.iteration +=1
+
+            
+        print("The best route found was: " + str(self.bestRoute))
+        print("The best energy value is: " + str(self.bestEnergy))
