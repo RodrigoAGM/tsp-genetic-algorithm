@@ -48,12 +48,11 @@ export default Vue.extend({
         lng: event.latLng.lng()
       });
     },
-    areFieldsValid() {
-      return true;
+    areFieldsValid(coldIndex, temperature, iteractions) {
+      return coldIndex > 0 && temperature > 0 && iteractions > 0;
     },
     calculateRoute(coldIndex, temperature, iteractions) {
-      console.log(coldIndex, temperature, iteractions);
-      if (!this.areFieldsValid()) {
+      if (!this.areFieldsValid(coldIndex, temperature, iteractions)) {
         this.$bvToast.toast("Los campos ingresados no son validos.", {
           title: "Error",
           variant: "danger",
@@ -62,6 +61,7 @@ export default Vue.extend({
         return;
       }
       this.path = this.markers;
+      return;
       // axios({
       //   method: "POST",
       //   url: "http://localhost:5000/calculate_route",
