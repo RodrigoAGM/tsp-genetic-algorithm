@@ -1,5 +1,3 @@
-import numpy as np
-
 # This is the class that represents a city with a name and (x,y) coordinates.
 
 
