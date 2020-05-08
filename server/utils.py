@@ -11,19 +11,19 @@ def generateCityList(rawList:list):
     for elem in rawList:
         #We get all the useful information of each element of the raw list
         #and transform it into a city
-        city = City(elem["id"], elem["x"], elem["y"])
+        city = City(elem["lat"], elem["lng"])
         cityList.append(city)
 
     return cityList
 
-def generateDictArray(cityList):
+def generateDictArray(route, cityList):
     '''
     This method will transform a list of cities to a list of dictionaries
     '''
     dicList = []
 
-    for city in cityList:
-        dic = {"id": city.name, "x": city.x, "y": city.y}
+    for i in range(0, cityList):
+        dic = {"lat": cityList[route[i]].x, "lng": cityList[route[i]].y}
         dicList.append(dic)
 
     return dicList
