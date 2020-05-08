@@ -20,7 +20,7 @@ class SimulatedAnnealing(object):
         self.bestEnergy = float("Inf")
 
 
-    def generateRandomPath(self):
+    def generateRandomRoute(self):
 
         listnum = [i for i in range(0, self.N)]
         return random.sample(listnum, self.N)
@@ -30,15 +30,34 @@ class SimulatedAnnealing(object):
         city1, city2 = self.cityList[index1], self.cityList[index2]
         return math.sqrt((city1[0] - city2[0]) ** 2 + (city1[1] - city2[1]) ** 2)
     
-    def calculatePathEnergy(self, path:List[int]):
+    def calculateRouteEnergy(self, route:List[int]):
 
         totalEnergy = 0
 
         for i in range(0, self.N - 1):
 
             endIndex = 0 if i == (self.N - 1) else i + 1
-            totalEnergy += self.dist(path[i], path[endIndex])
+            totalEnergy += self.dist(route[i], route[endIndex])
 
         return totalEnergy
 
 
+    def acceptanceFunction(self, newRoute):
+    
+        newEnergy = self.fitness(newRoute)
+
+        if newEnergy < self.currentEnergy:
+
+            self.currentEnergy, self.currentRoute = newEnergy, newRoute
+
+            if newEnergy < self.bestEnergy:
+
+                self.bestEnergy, self.bestRoute = newEnergy, newRoute
+
+        else:
+
+            if random.random() < math.exp(-abs(newEnergy - self.currentEnergy) / self.temperature):
+
+                self.currentEnergy, self.currentRoute = newEnergy, newRoute
+
+    
