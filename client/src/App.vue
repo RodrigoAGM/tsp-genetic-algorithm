@@ -28,7 +28,7 @@
 import Vue from "vue";
 import CouncilHeader from "./CouncilHeader.vue";
 import CouncilFooter from "./CouncilFooter.vue";
-// import axios from "axios";
+import axios from "axios";
 export default Vue.extend({
   name: "LimaCovid",
   components: {
@@ -60,27 +60,31 @@ export default Vue.extend({
         });
         return;
       }
-      this.path = this.markers;
+
+      axios({
+        method: "POST",
+        url: "http://localhost:5000/calculate_route",
+        data: {
+          coldIndex: coldIndex,
+          temperature: temperature,
+          iteractions: iteractions,
+          markers: this.markers
+        }
+      }).then(
+        result => {
+          console.log(result.data);
+          this.path = result.data.route;
+        },
+        error => {
+          console.log(error);
+          this.$bvToast.toast("Ocurrio un error al realizar la consulta :(", {
+            title: "Error",
+            variant: "danger",
+            solid: true
+          });
+        }
+      );
       return;
-      // axios({
-      //   method: "POST",
-      //   url: "http://localhost:5000/calculate_route",
-      //   data: {
-      //     cities: this.cities,
-      //     eliteSize: this.eliteSize,
-      //     initialPoblation: this.initialPoblation,
-      //     generationNumber: this.generationNumber,
-      //     mutationProbability: this.mutationProbability
-      //   }
-      // }).then(
-      //   result => {
-      //     console.log(result.data.route);
-      //     this.results = result.data;
-      //   },
-      //   error => {
-      //     console.error(error);
-      //   }
-      // );
     }
   }
 });
