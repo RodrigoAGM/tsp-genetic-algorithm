@@ -1,4 +1,4 @@
-from city import City
+from server.city import City
 from typing import List
 import math
 import random
@@ -86,3 +86,5 @@ class SimulatedAnnealing(object):
             
         print("The best route found was: " + str(self.bestRoute))
         print("The best energy value is: " + str(self.bestEnergy))
+
+        return self.bestRoute, self.bestEnergy
