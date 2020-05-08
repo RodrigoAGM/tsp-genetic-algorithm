@@ -14,7 +14,7 @@
           :position="m"
           :clickable="true"
           v-bind:key="key"
-          :label="(key+1).toString()"
+          :label="(key).toString()"
         ></GmapMarker>
 
         <GmapPolyline v-bind:path.sync="path" v-bind:options="{ strokeColor:'#0000FF'}"></GmapPolyline>
