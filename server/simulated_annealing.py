@@ -1,4 +1,4 @@
-from server.city import City
+from city import City
 from typing import List
 import math
 import random

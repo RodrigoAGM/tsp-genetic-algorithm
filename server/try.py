@@ -1,6 +1,6 @@
-from server.simulated_annealing import SimulatedAnnealing
+from simulated_annealing import SimulatedAnnealing
 import matplotlib.pyplot as plt
-from server.city import City
+from city import City
 
 cityList = [
     City(1, 0),
